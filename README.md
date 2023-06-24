@@ -78,7 +78,15 @@ Transform boundaries: Earthquakes.
 These geological events are the direct consequences of the interactions and movements of tectonic plates driven by the underlying convection currents in the Earth's mantle.
 
 ## Algorithmic Correspondence: 
-The following are the rules of thumb of algorithmic correspondences:\
+The following are the rules of thumb of algorithmic correspondences:
 1. Specificity = Don’t restrict development to analogies and metaphors only. Instead, integrate actual functionalities and mechanisms (control flow of the code) from nature on top of mere analogies and metaphors.
 2. Irreplacability: if the control flow of the code could be described conceptually otherwise, then the algorithmic correspondence is merely analogical and/or metaphorical, and thus redundant.
 3. Validity
+
+## Population Algorithms steps: Plate boundary or margins or faults
+
+1. Self-Adaptation in the Exploration phase (Divergent/Constructive Plate boundary [Seafloor Spreading]-> Volcanic activity)
+2. Cooperation: Information exchange (Fossil record sharing/correlation + Jigsaw Puzzle fitness molding + Rock/Mountain correlation) through Communication protocol (Transform/Conservative Plate boundary -> Earthquakes) [Exploration-Exploitation]
+3. Competition: Survival, Selection and Elimination after comparing solutions in the Exploitation phase (Convergent/Destructive Plate boundary: Subduction -> Mountain-building, Ocean trenches or Earthquakes)
+
+
