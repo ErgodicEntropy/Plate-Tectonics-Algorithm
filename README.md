@@ -83,10 +83,33 @@ The following are the rules of thumb of algorithmic correspondences:
 2. Irreplacability: if the control flow of the code could be described conceptually otherwise, then the algorithmic correspondence is merely analogical and/or metaphorical, and thus redundant.
 3. Validity
 
-## Population Algorithms steps: Plate boundary or margins or faults
+### Population Algorithms steps: Plate boundary or margins or faults
 
 1. Self-Adaptation in the Exploration phase (Divergent/Constructive Plate boundary [Seafloor Spreading]-> Volcanic activity)
 2. Cooperation: Information exchange (Fossil record sharing/correlation + Jigsaw Puzzle fitness molding + Rock/Mountain correlation) through Communication protocol (Transform/Conservative Plate boundary -> Earthquakes) [Exploration-Exploitation]
 3. Competition: Survival, Selection and Elimination after comparing solutions in the Exploitation phase (Convergent/Destructive Plate boundary: Subduction -> Mountain-building, Ocean trenches or Earthquakes)
+
+### Exploitation-Exploration paradigm: Divergent Plate boundary feedback loop and Conveyor Belt principle
+
+Likelihood Feedback loop via Convection currents: Divergent plate boundaries (Self-Adaptation, Exploration) causes colliding plates to move away from each others, but given the finite nature of the earth surface, what results is that some other plate gets nearer the colliding plates allowing for Convergent plate boundary to take place and thus Subduction occurs (Competition, Exploitation) [statistical in nature]. In the inverse direction, it is thanks to the Conveyor Belt principle (Earth Surface Area[Crust] Conservation) that whenever Subduction (Competition, Exploitation) takes place, the lost surface is balanced by the formation of new oceanic crust or platelets via Seafloor Spreading thus creating novel solution plates for further exploration (Self-Adaptation, Exploration)
+
+### Optimization Algorithm control flow (Flowchart): Algorithmization of Convection Current (Continental Drift-Tectonic effect) (Algorithmic Discretization into Optimization steps):
+
+#### Initialization:
+
+1. Start with a giant compounded Pangaea (List constituting all lists to be split from the Pangaea list)
+2. Continental Drift equation: Taking Pangaea apart into discrete continents or plates via Continental Drift (the driving force behind their movement: Convection Current)
+3. Retrieve N plates/continents from the Pangaea list (it means that the length of the Pangaea lsit should be divisible by N)
+
+#### Solution representation and Fitness function: Discrete Optimization
+
+1. Solutions = Plates or Platelets in the form of lists (discrete representation: Permutation or Booleans solution representation)
+2. Fitness function (any fitness function that takes discrete lists as inputs)
+
+### Local Opt algorithms components: Depth, Coverage and Mobility (Post-Processing)
+
+1. Coverage: Convection Currents or Generating further Platelets
+2. Mobility: Continental Drift velocity or Seafloor Spreading rate
+3. Depth: Aspiration Criteria via Fossil paleontological record
 
 
