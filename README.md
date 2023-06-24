@@ -82,6 +82,12 @@ The following are the rules of thumb of algorithmic correspondences:
 1. Specificity = Don’t restrict development to analogies and metaphors only. Instead, integrate actual functionalities and mechanisms (control flow of the code) from nature on top of mere analogies and metaphors.
 2. Irreplacability: if the control flow of the code could be described conceptually otherwise, then the algorithmic correspondence is merely analogical and/or metaphorical, and thus redundant.
 3. Validity
+### Type of the optimization algorithm: 
+1. Population Optimization algorithm
+2. Local Optimization algorithm
+3. Discrete Optimization algorithm
+
+### Neighborhood Topology, step size, size and threshold radius: 
 
 ### Population Algorithms steps: Plate boundary or margins or faults
 
