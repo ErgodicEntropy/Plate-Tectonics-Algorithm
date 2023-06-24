@@ -83,11 +83,20 @@ The following are the rules of thumb of algorithmic correspondences:
 2. Irreplacability: if the control flow of the code could be described conceptually otherwise, then the algorithmic correspondence is merely analogical and/or metaphorical, and thus redundant.
 3. Validity
 ### Type of the optimization algorithm: 
-1. Population Optimization algorithm
-2. Local Optimization algorithm
-3. Discrete Optimization algorithm
+1. Population Optimization algorithm:
+2. Local Optimization algorithm: the algorithm moves locally from one solution to another in the hopes of finding global optima (or an approximation thereof)
+3. Discrete Optimization algorithm: the algorithm takes in discrete solution representations only (Perumtation, Boolean...etc) and fitness functions that accept such inputs
 
-### Neighborhood Topology, step size, size and threshold radius: 
+#### Solution representation and Fitness function: Discrete Optimization (Permutation)
+
+1. Solutions = Plates in the form of lists (discrete representation: Permutation or Boolean solution representation)
+2. Fitness function (any fitness function that takes discrete lists as inputs)
+
+### Neighborhood Topology, step size, size and threshold radius:
+
+
+
+### Plate Tectonic Algorithmic Operators:
 
 ### Population Algorithms steps: Plate boundary or margins or faults
 
@@ -107,10 +116,14 @@ Likelihood Feedback loop via Convection currents: Divergent plate boundaries (Se
 2. Continental Drift equation: Taking Pangaea apart into discrete continents or plates via Continental Drift (the driving force behind their movement: Convection Current)
 3. Retrieve N plates/continents from the Pangaea list (it means that the length of the Pangaea lsit should be divisible by N)
 
-#### Solution representation and Fitness function: Discrete Optimization
 
-1. Solutions = Plates or Platelets in the form of lists (discrete representation: Permutation or Booleans solution representation)
-2. Fitness function (any fitness function that takes discrete lists as inputs)
+#### Iteration Loop: (Order doesn't matter but we will go with standards)
+1. Fitness evaluation
+2. Fit Plates/Continents Selection (optional)
+3. Randomization operators
+4. Information exchange
+5. Comparison and Selection
+6. Repeat
 
 ### Local Opt algorithms components: Depth, Coverage and Mobility (Post-Processing)
 
