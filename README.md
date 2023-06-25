@@ -131,7 +131,7 @@ A larger Biot number (Bi >> 1) indicates that convection at the surface is domin
 ### Population Algorithms steps: Plate boundary or margins or faults
 
 1. Self-Adaptation in the Exploration phase (Divergent/Constructive Plate boundary [Seafloor Spreading]-> Volcanic activity)
-2. Cooperation: Information exchange (Fossil record sharing/correlation + Jigsaw Puzzle fitness molding + Rock/Mountain correlation + Glacial Striation) through Communication protocol (Transform/Conservative Plate boundary -> Earthquakes) [Exploration-Exploitation]
+2. Cooperation: Information exchange (Fossil record sharing/correlation + Jigsaw Puzzle fitness molding + Rock/Mountain correlation + Paleoclimate correlation [Glacial Striation + Bituminous Coal]) through Communication protocol (Transform/Conservative Plate boundary -> Earthquakes) [Exploration-Exploitation]
 3. Competition: Survival, Selection and Elimination after comparing solutions in the Exploitation phase (Convergent/Destructive Plate boundary: Subduction -> Mountain-building, Ocean trenches or Earthquakes)
 
 ### Exploitation-Exploration paradigm: Divergent Plate boundary feedback loop and Conveyor Belt principle
