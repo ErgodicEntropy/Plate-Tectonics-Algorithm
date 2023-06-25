@@ -81,7 +81,7 @@ These geological events are the direct consequences of the interactions and move
 The following are the rules of thumb of algorithmic correspondences:
 1. Specificity = Don’t restrict development to analogies and metaphors only. Instead, integrate actual functionalities and mechanisms (control flow of the code) from nature on top of mere analogies and metaphors.
 2. Irreplacability: if the control flow of the code could be described conceptually otherwise, then the algorithmic correspondence is merely analogical and/or metaphorical, and thus redundant.
-3. Validity: Operators and Equation
+3. Validity: Operators and Equation (Conceptual and Numerical validity)
 ### Type of the optimization algorithm: 
 1. Population Optimization algorithm:
 2. Local Optimization algorithm: the algorithm moves locally from one solution to another in the hopes of finding global optima (or an approximation thereof)
