@@ -87,16 +87,42 @@ The following are the rules of thumb of algorithmic correspondences:
 2. Local Optimization algorithm: the algorithm moves locally from one solution to another in the hopes of finding global optima (or an approximation thereof)
 3. Discrete Optimization algorithm: the algorithm takes in discrete solution representations only (Perumtation, Boolean...etc) and fitness functions that accept such inputs
 
+### Plate Tectonic Algorithmic Equation: Heat Transfer Convection equation
+Q = h * A * ΔT
+where:
+
+Q is the heat transfer rate (in watts)
+h is the convective heat transfer coefficient (in watts per square meter per Kelvin)
+A is the surface area through which heat is being transferred (in square meters)
+ΔT is the temperature difference between the solid surface and the surrounding fluid (in Kelvin)
+This equation describes the rate of heat transfer through convection, which is the process of heat transfer between a solid surface and a fluid (such as air or liquid) due to the fluid's motion or flow. The convective heat transfer coefficient h depends on various factors including fluid properties, flow conditions, and surface characteristics. Moreover, h is usually high when the convection phenomenon is forced by external perturbation as opposed to when it's naturally occurring (Newton's law of cooling)\
+the heat tranfer coefficient h is defined as: Bi = h * L / k
+Bi is the Biot number
+h is the convective heat transfer coefficient
+L is the characteristic length of the system or object
+k is the thermal conductivity of the material
+The Biot number is a dimensionless parameter that relates the resistance to internal heat conduction within an object to the resistance to external heat transfer through convection. It is used to determine the dominance of conduction or convection in the heat transfer process.\
+
+A smaller Biot number (Bi << 1) indicates that conduction within the object is dominant, meaning that heat transfer is primarily governed by the internal conduction resistance. In this case, the convective heat transfer coefficient (h) may have a relatively smaller impact on the overall heat transfer rate.\
+
+A larger Biot number (Bi >> 1) indicates that convection at the surface is dominant, meaning that heat transfer is primarily governed by the external convective resistance. In this case, the convective heat transfer coefficient (h) has a significant influence on the overall heat transfer rate.
+
+### Plate Tectonic Algorithmic Operators:
+1. Divergence operator
+2. Transform operator
+3. Convergence operator
+
 #### Solution representation and Fitness function: Discrete Optimization (Permutation)
 
 1. Solutions = Plates in the form of lists (discrete representation: Permutation or Boolean solution representation)
 2. Fitness function (any fitness function that takes discrete lists as inputs)
 
 ### Neighborhood Topology, step size, size and threshold radius:
+1. Neighborhood Topology (Distance/Norm metric or measure): Permutation XOR (it satisfies the axioms of a norm in a normed vector space)
+2. Step size (Mobility): It depends on the convection coefficient of the Heat Transfer equation in the Divergence plate boundary (Exploration phase)
+3. Neighborhood Size: arbitrary (number of solutions in the neighbordhood, which is determined by the neighborhood threshold)
+4. Neighborhood threshold (radius): arbitrary (maximum number of times of solution variation while staying in the neighborhood)
 
-
-
-### Plate Tectonic Algorithmic Operators:
 
 ### Population Algorithms steps: Plate boundary or margins or faults
 
