@@ -121,10 +121,10 @@ A larger Biot number (Bi >> 1) indicates that convection at the surface is domin
 ### Plate Tectonic Algorithmic Operators (Causes and Effects)
 #### Causes:
 1. Divergence operator: Rift zone 
-2. Transform operator
+2. Transform operator: it is convenient to use continental drift evidence (outline by A. Wegener) in this operator due its algorithmic role; Fossil record sharing/correlation + Jigsaw Puzzle fitness molding + Rock/Mountain correlation + Paleoclimate correlation [Glacial Striation + Bituminous Coal]
 3. Convergence operator: Continental-Oceanic crust collision (Subduction zone) or Oceanic-Oceanic (Island arc) or Continental-Continental (Collision zone)
 #### Effects: Plate boundary type + Plate type
-1. Divergence effects: Mid-Ocean ridge (Seafloor Spreading)
+1. Divergence effects: Mid-Ocean ridge (Seafloor Spreading: Rock age, Magnetic Stripes and Rock sediments)
 2. Transform effects: Earthquake
 3. Convergence effects: Earthquake, Volcano, Ocean trenches, Mountain building, Island formation
 
