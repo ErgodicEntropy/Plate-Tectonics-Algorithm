@@ -175,7 +175,7 @@ Likelihood Feedback loop via Convection currents: Divergent plate boundaries (Se
 ### Local Opt algorithms components: Depth, Coverage and Mobility (Post-Processing)
 
 1. Coverage: Convection Currents or Generating further Platelets
-2. Mobility: Continental Drift velocity or Seafloor Spreading rate
+2. Mobility: Continental Drift velocity (optimal step size)
 3. Depth: Aspiration Criteria via Fossil paleontological record
 
 
