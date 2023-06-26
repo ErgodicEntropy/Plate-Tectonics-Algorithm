@@ -253,7 +253,7 @@ T2 = 2000
 Q = Convection(T1,T2,t1,t2)
 PC = N*kb*Q/V #Probability of convergent plate boundary occurence (collision frequency) which is the kinetic theory definiton of Pressure
 F = []
-SP = [] #Selected Plates
+SP = [] #Selected Plates: Fossil paleontological record (a sort of a memory structure to avoid costful current solutions systematically)
 en = 3 #Elitism number
 while t < Max_Iter and Q != 0:
     # Initial Elitism: Centralized Fitness evaluation due to the initially absent interactions between plates
