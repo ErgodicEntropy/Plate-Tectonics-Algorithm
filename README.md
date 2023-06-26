@@ -77,17 +77,24 @@ Transform boundaries: Earthquakes.
 
 These geological events are the direct consequences of the interactions and movements of tectonic plates driven by the underlying convection currents in the Earth's mantle.
 
+## Types of plates:
+1. Continental plates: made up of granite
+2. Oceanic plates: made up of basalt
+
+Oceanic plates are much denser and heavier than continental plates. Therefore, oceanic plates get to be subducted in convergence plate boundaries.
+
+
 ## Algorithmic Correspondence: 
 The following are the rules of thumb of algorithmic correspondences:
 1. Specificity = Don’t restrict development to analogies and metaphors only. Instead, integrate actual functionalities and mechanisms (control flow of the code) from nature on top of mere analogies and metaphors.
 2. Irreplacability: if the control flow of the code could be described conceptually otherwise, then the algorithmic correspondence is merely analogical and/or metaphorical, and thus redundant.
 3. Validity: Operators and Equation (Conceptual and Numerical validity)
 ### Type of the optimization algorithm: 
-1. Population Optimization algorithm:
+1. Population Optimization algorithm: the algorithm evaluates a population of solutions per iteration.
 2. Local Optimization algorithm: the algorithm moves locally from one solution to another in the hopes of finding global optima (or an approximation thereof)
 3. Discrete Optimization algorithm: the algorithm takes in discrete solution representations only (Perumtation, Boolean...etc) and fitness functions that accept such inputs
 
-### Plate Tectonic Algorithmic Equation: Heat Transfer Convection equation
+### Plate Tectonic Algorithmic Equation: Heat Transfer Convection equation and parameters
 Q = h * A * ΔT
 
 where:
@@ -111,10 +118,16 @@ A smaller Biot number (Bi << 1) indicates that conduction within the object is d
 
 A larger Biot number (Bi >> 1) indicates that convection at the surface is dominant, meaning that heat transfer is primarily governed by the external convective resistance. In this case, the convective heat transfer coefficient (h) has a significant influence on the overall heat transfer rate.
 
-### Plate Tectonic Algorithmic Operators:
-1. Divergence operator
+### Plate Tectonic Algorithmic Operators (Causes and Effects)
+#### Causes:
+1. Divergence operator: Rift zone 
 2. Transform operator
-3. Convergence operator
+3. Convergence operator: Continental-Oceanic crust collision (Subduction zone) or Oceanic-Oceanic (Island arc) or Continental-Continental (Collision zone)
+#### Effects: Plate boundary type + Plate type
+1. Divergence effects: Mid-Ocean ridge (Seafloor Spreading)
+2. Transform effects: Earthquake
+3. Convergence effects: Earthquake, Volcano, Ocean trenches, Mountain building, Island formation
+
 
 #### Solution representation and Fitness function: Discrete Optimization (Permutation)
 
@@ -136,7 +149,7 @@ A larger Biot number (Bi >> 1) indicates that convection at the surface is domin
 
 ### Exploitation-Exploration paradigm: Divergent Plate boundary feedback loop and Conveyor Belt principle
 
-Likelihood Feedback loop via Convection currents: Divergent plate boundaries (Self-Adaptation, Exploration) causes colliding plates to move away from each others, but given the finite nature of the earth surface, what results is that some other plate gets nearer the colliding plates allowing for Convergent plate boundary to take place and thus Subduction occurs (Competition, Exploitation) [statistical in nature]. In the inverse direction, it is thanks to the Conveyor Belt principle (Earth Surface Area[Crust] Conservation) that whenever Subduction (Competition, Exploitation) takes place, the lost surface is balanced by the formation of new oceanic crust or platelets via Seafloor Spreading thus creating novel solution plates for further exploration (Self-Adaptation, Exploration)
+Likelihood Feedback loop via Convection currents: Divergent plate boundaries (Self-Adaptation, Exploration) causes colliding plates to move away from each others, but given the finite nature of the earth surface, what results is that some other plate gets nearer the colliding plates allowing for Convergent plate boundary to take place and thus Subduction occurs (Competition, Exploitation) [statistical in nature]. In the inverse direction, it is thanks to the Conveyor Belt principle (Earth Surface Area Crust Conservation) that whenever Subduction (Competition, Exploitation) takes place, the lost surface is balanced by the formation of new oceanic crust via Seafloor Spreading thus creating novel solution plates for further exploration (Self-Adaptation, Exploration)
 
 ### Optimization Algorithm control flow (Flowchart): Algorithmization of Convection Current (Continental Drift-Tectonic effect) (Algorithmic Discretization into Optimization steps):
 
