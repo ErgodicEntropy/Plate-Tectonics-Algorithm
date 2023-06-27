@@ -157,7 +157,7 @@ Likelihood Feedback loop via Convection currents: Divergent plate boundaries (Se
 
 1. Start with a giant compounded Pangaea (List constituting all lists to be split from the Pangaea list)
 2. Continental Drift equation: Taking Pangaea apart into discrete continents or plates via Continental Drift (the driving force behind their movement: Convection Current)
-3. Retrieve N plates/continents from the Pangaea list (it means that the length of the Pangaea lsit should be divisible by N)
+3. Retrieve N plates/continents from the Pangaea list (it means that the length of the Pangaea list should be divisible by N)
 
 
 #### Iteration Loop: (Order doesn't matter but we will go with standards)
