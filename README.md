@@ -92,7 +92,7 @@ The following are the rules of thumb of algorithmic correspondences:
 ### Type of the optimization algorithm: 
 1. Population Optimization algorithm: the algorithm evaluates a population of solutions per iteration.
 2. Local Optimization algorithm: the algorithm moves locally from one solution to another in the hopes of finding global optima (or an approximation thereof)
-3. Discrete Optimization algorithm: the algorithm takes in discrete solution representations only (Perumtation, Boolean...etc) and fitness functions that accept such inputs
+3. Discrete Optimization algorithm: the algorithm takes in discrete solution representations only (Permutation, Boolean...etc) and fitness functions that accept such inputs
 
 ### Plate Tectonic Algorithmic Equation: Heat Transfer Convection equation and parameters
 Q = h * A * ΔT
