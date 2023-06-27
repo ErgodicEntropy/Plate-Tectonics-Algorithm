@@ -129,7 +129,7 @@ A larger Biot number (Bi >> 1) indicates that convection at the surface is domin
 3. Convergence effects: Earthquake, Volcano, Ocean trenches, Mountain building, Island formation
 
 
-#### Solution representation and Fitness function: Discrete Optimization (Permutation)
+### Solution representation and Fitness function: Discrete Optimization (Permutation)
 
 1. Solutions = Plates in the form of lists (discrete representation: Permutation or Boolean solution representation)
 2. Fitness function (any fitness function that takes discrete lists as inputs)
