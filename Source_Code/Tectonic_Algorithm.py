@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import itertools
 import functools
-from scipy.constants import Boltzmann
+from scipy.constants import Boltzmann, pi
 
 kb = Boltzmann
 
@@ -18,7 +18,8 @@ Lc = 10000# Characteristic length
 EC = 100# Heat Cost (present in all aspects of plate tectonics)s
 OT = 9 #Ocean selection threshold
 V = A*Lc# Volume of the Ocean
-
+gamma = A/N #Proportionality constant
+AvgSpeed = 0.5 #Tectonics average speed (usually 10cm annually)
 
 
 ##Initialization:
@@ -100,10 +101,14 @@ def Classification(Q): #Solution representation dependent
 #Main Equation: Heat Transfer through Convection : Lithosphere floating on semi-fluid layer of molten magma (asthenosphere)
 
 def Convection(T1,T2, t1, t2):
-    Q = h*A*(T2-T1)*(t2-t1)
+    Q = h*A*(T2-T1)*(t2-t1) #Q = mc(T2-T1) where m is the mass of the plates and c is the heat capacity of the plates [this equation is not about heat-transfer but still valid]
     return Q
 
+# In order to account for the convergence plate boundary probability of occurence (frequency), it is valid to frame the collisions between plates as a crystallization effect taking place in a Voronoi diagram (Kolmogorov-Avrami equation)
+def Kolmogorov_Avrami(y,v,t): #Statistical model/equation describing Crystallization effect via Crystallization Fraction (Fraction of total region covered by crystalls) in Voronoi Cell pattern
+    return 1 - math.exp(-pi*y*v*t**2) #sigmoid probability that a randomly selected point will be inside one of crystalls (of which there are infinitely many thus the exponential-saturation effect) = Crystallization Fraction
 
+## The assumptions of this model: Random plate tectonics, Independence plate tectonics, Large Area, N-Area proprotionality, Constant Tectonics speed, Isotropy and Non-Overlapping
 
 # Plate Tectonics operator
 
@@ -250,12 +255,14 @@ t1 = t
 t2 = Max_Iter
 T1 = 20 
 T2 = 2000
-Q = Convection(T1,T2,t1,t2)
-PC = N*kb*Q/V #Probability of convergent plate boundary occurence (collision frequency) which is the kinetic theory definiton of Pressure
+AvgT = T1+T2/2
+Q = Convection(T1,T2,t1,t2) 
+#PC = N*kb*AvgT/V #Probability of convergent plate boundary occurence (collision frequency) which is the kinetic theory definiton of Pressure (which is not compatible with heat transfer since Pressure is a state variable) or we can otherwise use Voronoi Cell patterns to describe Crystallization in the sense that Crystallization Fraction replaces the Pressure definition of PC
 F = []
-SP = [] #Selected Plates: Fossil paleontological record (a sort of a memory structure to avoid costful current solutions systematically)
+SP = [] #Selected Plates
 en = 3 #Elitism number
 while t < Max_Iter and Q != 0:
+    PC = Kolmogorov_Avrami(gamma,AvgSpeed,t)
     # Initial Elitism: Centralized Fitness evaluation due to the initially absent interactions between plates
     P = Centralized_Fitness_Evaluation(G_P)
     F = P
