@@ -295,6 +295,7 @@ while t < Max_Iter and Q != 0:
     OI = O.index(np.max(O))
     SP2 = SP[OI]
     DivSol, PC = EE_Feedback_Loop(SP1,SP2)
+    SP.append(DivSol)
     Q = Q - EC
     t = t + 1
 
