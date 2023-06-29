@@ -12,6 +12,7 @@ kb = Boltzmann
 
 N = 50 #Number of plates/solutions
 M = 9 #Number of platelets
+MP = 100 #Mass of the plates (assuming homogeneity between continental and ocean plates)
 h = 0.2#Convection coefficient
 A = 139000000#Surface Area of the Ocean
 Lc = 10000# Characteristic length
@@ -19,8 +20,10 @@ EC = 100# Heat Cost (present in all aspects of plate tectonics)s
 OT = 9 #Ocean selection threshold
 V = A*Lc# Volume of the Ocean
 gamma = A/N #Proportionality constant
-AvgSpeed = 0.5 #Tectonics average speed (usually 10cm annually)
-
+T1 = 20
+T2 = 2000
+t1 = 0
+Max_Iter = 20
 
 ##Initialization:
 
@@ -57,6 +60,17 @@ def Neighborhood_Plates(Plate): #Plates that collided with the given plate (Tran
 #Solutions = Plates or Platelets in the form of lists (discrete representation: Permutation or Booleans solution representation)
 
 ## Solutions are permutation lists
+def Permutation_List_Generator(m):
+    Perm_List = []
+    for k in range(m):
+        Perm_List.append(int(random.uniform(1,10)))
+    return Perm_List
+
+def Levenshtein_Distance(P1,P2): #minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other.
+    dist = 0
+    for k in range(len(P1)):
+        dist = dist + int(bool(P1[k] != P2[k]))
+    return dist #Maximum Levenshtein distance in this case is len(P1)
 
 #Fitness function (any fitness function that takes discrete lists as inputs)
 
@@ -108,8 +122,8 @@ def Classification(Q): #Solution representation dependent
 
 #Main Equation: Heat Transfer through Convection : Lithosphere floating on semi-fluid layer of molten magma (asthenosphere)
 
-def Convection(T1,T2, t1, t2):
-    Q = h*A*(T2-T1)*(t2-t1) #Q = mc(T2-T1) where m is the mass of the plates and c is the heat capacity of the plates [this equation is not about heat-transfer but still valid]
+def Convection(T,t):
+    Q = h*A*(T-T1)*(t-t1) #Q = mc(T2-T1) where m is the mass of the plates and c is the heat capacity of the plates [this equation is not about heat-transfer but still valid]
     return Q
 
 # In order to account for the convergence plate boundary probability of occurence (frequency), it is valid to frame the collisions between plates as a crystallization effect taking place in a Voronoi diagram (Kolmogorov-Avrami equation)
@@ -129,8 +143,8 @@ def Divergence(P1,P2): # Self-Adaptation phase (Exploration)
     return P1, P2
 
 def Transform(P1,P2): # Information exchange phase (Cooperation): Fossil record correlation, Rock-Mountain correlation, Paleoclimate correlation, Jigsaw Puzzle fitting
-    Entanglement = Fitness(P1)*Fitness(P2) #It can be any sort of mathematical operation. The point is just to encode interactions numerically (private keys)
-    return Entanglement #Zero conditional entropy = maximum mutual information = Fitness(P1,P2) is not Fitness(P1)*Fitness(P2) which itself can't be decomposed into individual fitnesses due to information loss
+    Joint_Fitness = Fitness(P1)*Fitness(P2) #It can be any sort of mathematical operation. The point is just to encode interactions numerically in one unique value (relational private keys, information loss) in the form of joint "knot" fitness (coupled fitness functions) that needs to be decoupled or untied during evaluation
+    return Joint_Fitness #Zero conditional entropy due to entanglement/superposition = maximum mutual information due to entanglement/superposition = Joint Fitness(P1,P2)
 
 def Convergence(P1,P2): #Collision = Selection and Replacement (Competition, Exploitation)
     SP = [1,2,3,4,5,6,7,8,9]
@@ -238,7 +252,7 @@ def Conveyor_Belt_Principle(Q,P1,P2): #Conveyor Belt-Crust Conservation principl
 
 def Likelihood_Increasing(Q,P1,P2): #Likelihood increasing (Divergence effects -> Convergence)
     Div_Sol = Mid_Ocean_Ridge(Q,P1,P2)
-    PC = PC + random.uniform(0,1-PC)
+    PC = PC + random.uniform(0,(1-PC)/2)
     return PC
     
 
@@ -257,21 +271,17 @@ def Threshold_Selection(th,SL):
     else:
          Threshold_Selection(SL) 
 
-t = 0
-Max_Iter = 20
-t1 = t 
-t2 = Max_Iter
-T1 = 20 
-T2 = 2000
+t = t1
+T = T1
 AvgT = T1+T2/2
-Q = Convection(T1,T2,t1,t2) # How about incrementally increasing T from T1 to T2 ?
-#AvgSpeed = 3kbT/MP (only make sense if T is incrementally increased)
-#PC = N*kb*AvgT/V #Probability of convergent plate boundary occurence (collision frequency) which is the kinetic theory definiton of Pressure (which is not compatible with heat transfer since Pressure is a state variable) or we can otherwise use Voronoi Cell patterns to describe Crystallization in the sense that Crystallization Fraction replaces the Pressure definition of PC
 F = []
 SP = [] #Selected Plates
 en = 3 #Elitism number
-while t < Max_Iter and Q != 0:
-    PC = Kolmogorov_Avrami(gamma,AvgSpeed,t)
+Q = 0.00001 #a non zero start
+while t < Max_Iter and Q != 0 and T < T2:
+    Q = Convection(T,t)
+    AvgSpeed = 3*kb*T/MP
+    PC = Kolmogorov_Avrami(gamma,AvgSpeed,t) #PC = N*kb*AvgT/V #Probability of convergent plate boundary occurence (collision frequency) which is the kinetic theory definiton of Pressure (which is not compatible with heat transfer since Pressure is a state variable) or we can otherwise use Voronoi Cell patterns to describe Crystallization in the sense that Crystallization Fraction replaces the Pressure definition of PC
     # Initial Elitism: Centralized Fitness evaluation due to the initially absent interactions between plates
     P = Centralized_Fitness_Evaluation(G_P)
     F = P
@@ -307,14 +317,26 @@ while t < Max_Iter and Q != 0:
     SP.append(DivSol)
     Q = Q - EC
     t = t + 1
+    T = T + 1
 
 
 FFT = np.max(F)
 BEST = F.index(FFT)
-Sol = SP[BEST]
+Sol = SP[BEST] #Depth 
+#Coverage Post-Analysis (Ergodicity): Law of Large Numbers and Monte Carlo
+MC = 100
+MCDist = []
+for k in range(MC):
+    Unvisited_Sol = Permutation_List_Generator(9)
+    while Unvisited_Sol in SP:
+        Unvisited_Sol = Permutation_List_Generator(9)
+    MCDist.append(Levenshtein_Distance(Sol,Unvisited_Sol))
 
 print(Sol)
 print(FFT)
+print(np.max(MCDist)) #Coverage
+
+
 
 
 
