@@ -45,6 +45,15 @@ for k in range(N):
 
 G_P = Solutions
 
+def Neighborhood_Plates(Plate): #Plates that collided with the given plate (Transform)
+    NS = int(random.uniform(2,N)) #Minimum number of transform boundaries for each plate is 2 since that's required in order to evaluate fitness function coherently
+    GPC = G_P.copy()
+    NLP = GPC.pop(GPC.index(Plate)) #Preventing reflexive loops
+    np.random.shuffle(NLP) #Shuffling is used to statistically prevent (make unlikely) all plates having the same exact neighborhoods (unrealistic with Pangaea as exception)
+    NP = [] #Neighborhood of plates to the given plate input
+    for k in range(NS):
+        NP.append(NLP[k])
+    return NP
 #Solutions = Plates or Platelets in the form of lists (discrete representation: Permutation or Booleans solution representation)
 
 ## Solutions are permutation lists
@@ -55,17 +64,16 @@ def Fitness(L): #Fitness is meant to represent the density of the plate (solutio
     return np.sum(L)
 
 # Fitness Evaluation
-def Coherentist_Fitness_Evaluation(P,SL): #Indirect-Decentralized fitness evaluation that is akin to blockchain technology (coherentism): Triad Fitness evaluation
+def Coherentist_Fitness_Evaluation(P): #Indirect-Decentralized fitness evaluation that is akin to blockchain technology (coherentism): Triad Fitness evaluation
+    SL = Neighborhood_Plates(P)
     P1 = SL[int(random.uniform(0, len(SL)))]
-    P2 = SL[int(random.uniform(0, len(SL)))]
-    while P1 == P or P2 == P:
-        P1 = SL[int(random.uniform(0, len(SL)))]
-        P2 = SL[int(random.uniform(0, len(SL)))] #Taking random solutions in the solution space by assuming that the interaction (transform) graph is exhausted ie complete wich means all interactions possible take place :N(N-1)/2 possibilities/edges (assuming of course that interactions are symmetrical and non-reflexive). Otherwise, one has to construct a neighborhood set of solutions for each solution
+    P2 = SL[int(random.uniform(0, len(SL)))] #Avoiding Overdetermined and Underdetermined system of equations (3 is the perfect numbers)
     Entanglement1 = Transform(P,P1)
     Entanglement2 = Transform(P,P2)
     CoherentistEntanglement = Transform(P1,P2)
     P_Fitness = math.sqrt(Entanglement1*Entanglement2/CoherentistEntanglement)
-    return P_Fitness
+    return P_Fitness     #Taking random solutions in the solution space by assuming that the interaction (transform) graph is exhausted ie complete wich means all interactions possible take place :N(N-1)/2 possibilities/edges (assuming of course that interactions are symmetrical and non-reflexive). Otherwise, one has to construct a neighborhood set of solutions for each solution
+
 
 def Coherentist_Solution_Selection(RFP, SL): #Divide and Conquer methodology
     k = 0
@@ -256,7 +264,8 @@ t2 = Max_Iter
 T1 = 20 
 T2 = 2000
 AvgT = T1+T2/2
-Q = Convection(T1,T2,t1,t2) 
+Q = Convection(T1,T2,t1,t2) # How about incrementally increasing T from T1 to T2 ?
+#AvgSpeed = 3kbT/MP (only make sense if T is incrementally increased)
 #PC = N*kb*AvgT/V #Probability of convergent plate boundary occurence (collision frequency) which is the kinetic theory definiton of Pressure (which is not compatible with heat transfer since Pressure is a state variable) or we can otherwise use Voronoi Cell patterns to describe Crystallization in the sense that Crystallization Fraction replaces the Pressure definition of PC
 F = []
 SP = [] #Selected Plates
@@ -273,7 +282,7 @@ while t < Max_Iter and Q != 0:
         
 #Cooperation: Information exchange (Fossil record sharing/correlation + Jigsaw Puzzle fitness molding + Rock/Mountain correlation + Glacial Striation + Bituminous Coal) through Communication protocol (Transform/Conservative Plate boundary -> Earthquakes) [Exploration-Exploitation]
     for k in range(len(G_P)):
-        F.append(Coherentist_Fitness_Evaluation(G_P[k], G_P))
+        F.append(Coherentist_Fitness_Evaluation(G_P[k]))
 
 
 #Competition: Survival, Selection and Elimination after comparing solutions in the Exploitation phase (Convergent/Destructive Plate boundary: Subduction -> Mountain-building, Ocean trenches or Earthquakes)
