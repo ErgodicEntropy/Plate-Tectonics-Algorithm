@@ -170,7 +170,8 @@ Likelihood Feedback loop via Convection currents: Divergent plate boundaries (Se
 
 #### Termination criteria
 1. Max_Iter: timescale of convection currents
-2. Heat Energy depletion: while Q != 0
+2. Temperature difference
+3. Heat Energy depletion: while Q != 0
 
 ### Local Opt algorithms components: Depth, Coverage and Mobility (Post-Processing)
 
