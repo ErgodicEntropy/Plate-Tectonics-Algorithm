@@ -273,27 +273,29 @@ def Threshold_Selection(th,SL):
 
 t = t1
 T = T1
-AvgT = T1+T2/2
 F = []
 SP = [] #Selected Plates
 en = 3 #Elitism number
+# Initial Elitism: Centralized Fitness evaluation due to the initially absent interactions between plates
+P = Centralized_Fitness_Evaluation(G_P)
+F = P
+SP.append(Centralized_Solution_Selection(F,en))
+GF = []
+GF.append(F)
 Q = 0.00001 #a non zero start
 while t < Max_Iter and Q != 0 and T < T2:
     Q = Convection(T,t)
     AvgSpeed = 3*kb*T/MP
-    PC = Kolmogorov_Avrami(gamma,AvgSpeed,t) #PC = N*kb*AvgT/V #Probability of convergent plate boundary occurence (collision frequency) which is the kinetic theory definiton of Pressure (which is not compatible with heat transfer since Pressure is a state variable) or we can otherwise use Voronoi Cell patterns to describe Crystallization in the sense that Crystallization Fraction replaces the Pressure definition of PC
-    # Initial Elitism: Centralized Fitness evaluation due to the initially absent interactions between plates
-    P = Centralized_Fitness_Evaluation(G_P)
-    F = P
-    SP.append(Centralized_Solution_Selection(F,en))
+    PC = Kolmogorov_Avrami(gamma,AvgSpeed,t) #PC = N*kb*AvgT/V :Probability of convergent plate boundary occurence (collision frequency) which is the kinetic theory definiton of Pressure (which is not compatible with heat transfer since Pressure is a state variable) or we can otherwise use Voronoi Cell patterns to describe Crystallization in the sense that Crystallization Fraction replaces the Pressure definition of PC
 
 #Self-Adaptation in the Exploration phase (Divergent/Constructive Plate boundary [Seafloor Spreading]-> Volcanic activity)
     Threshold_Selection(OT,G_P)
         
 #Cooperation: Information exchange (Fossil record sharing/correlation + Jigsaw Puzzle fitness molding + Rock/Mountain correlation + Glacial Striation + Bituminous Coal) through Communication protocol (Transform/Conservative Plate boundary -> Earthquakes) [Exploration-Exploitation]
+    FF = []
     for k in range(len(G_P)):
-        F.append(Coherentist_Fitness_Evaluation(G_P[k]))
-
+        FF.append(Coherentist_Fitness_Evaluation(G_P[k]))
+    GF.append(FF)
 
 #Competition: Survival, Selection and Elimination after comparing solutions in the Exploitation phase (Convergent/Destructive Plate boundary: Subduction -> Mountain-building, Ocean trenches or Earthquakes)
     k = 0
@@ -302,12 +304,13 @@ while t < Max_Iter and Q != 0 and T < T2:
         P2 = G_P[int(random.uniform(0,len(G_P)))]
         if P1 != P2:
             SP.append(Convergence_Likelihood(PC,P1,P2))
+        k = k + 1
 
 ## Exploration Exploitation paradigm:
 
 #Likelihood Feedback loop via Convection currents: Divergent plate boundaries (Self-Adaptation, Exploration) causes colliding plates to move away from each others, but given the finite nature of the earth surface, what results is that some other plate gets nearer the colliding plates allowing for Convergent plate boundary to take place and thus Subduction occurs (Competition, Exploitation) [statistical in nature]. In the inverse direction, it is thanks to the Conveyor Belt principle (Earth Surface Area[Crust] Conservation) that whenever Subduction (Competition, Exploitation) takes place, the lost surface is balanced by the formation of new oceanic crust or platelets via Seafloor Spreading thus creating novel solution plates for further exploration (Self-Adaptation, Exploration)
 
-    BI = F.index(np.max(F))
+    BI = GF[len(GF)-1].index(np.max(GF[len(GF)-1]))
     SP1 = SP[BI]
     O = F.copy()
     O.pop(BI)
@@ -319,7 +322,9 @@ while t < Max_Iter and Q != 0 and T < T2:
     t = t + 1
     T = T + 1
 
-
+def membership(x,A):
+    return np.any(A == x)
+    
 FFT = np.max(F)
 BEST = F.index(FFT)
 Sol = SP[BEST] #Depth 
@@ -328,7 +333,7 @@ MC = 100
 MCDist = []
 for k in range(MC):
     Unvisited_Sol = Permutation_List_Generator(9)
-    while Unvisited_Sol in SP:
+    while membership(Unvisited_Sol, SP) or membership(Unvisited_Sol, G_P):
         Unvisited_Sol = Permutation_List_Generator(9)
     MCDist.append(Levenshtein_Distance(Sol,Unvisited_Sol))
 
